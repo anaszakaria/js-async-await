@@ -94,15 +94,6 @@ promiseGetSelectedUsers()
 
 #### Queue Async Await
 ```
-async function getPost() {
-    const post1 = await axios.get('https://jsonplaceholder.typicode.com/posts/1')
-    const post2 = await axios.get('https://jsonplaceholder.typicode.com/posts/2')
-    const post3 = await axios.get('https://jsonplaceholder.typicode.com/posts/3')
-    return [post1.data, post2.data, post3.data]
-}
-
-getPost().then(result => console.log('Selected Posts:', result))
-
 async function getDataInSequence() {
     const posts = await axios.get('https://jsonplaceholder.typicode.com/posts')
     console.log('posts', posts)
