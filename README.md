@@ -27,7 +27,7 @@ async function getComment(postID) {
     .then(response => response.data)
 }
 
-getComment(1).then(data => console.log('Comments:', data))
+getComment(1).then(data => console.log(`Post 1 Comments:`, data))
 ```
 
 #### Return Await .then().catch()
@@ -92,21 +92,32 @@ async function promiseGetSelectedUsers() {
 promiseGetSelectedUsers()
 ```
 
+#### Async Await Multiple Requests without Promise All
+```
+async function getPost() {
+    const user = await axios.get('https://jsonplaceholder.typicode.com/users/1')
+    const post = await axios.get('https://jsonplaceholder.typicode.com/posts?userId=1')
+    return { user, post }
+}
+
+getPost().then(result => console.log('User and Posts:', result))
+```
+
 #### Queue Async Await
 ```
 async function getDataInSequence() {
     const posts = await axios.get('https://jsonplaceholder.typicode.com/posts')
-    console.log('posts', posts)
+    console.log('Posts', posts)
     const comments = await axios.get('https://jsonplaceholder.typicode.com/comments')
-    console.log('comments', comments)
+    console.log('Comments', comments)
     const albums = await axios.get('https://jsonplaceholder.typicode.com/albums')
-    console.log('albums', albums)
+    console.log('Albums', albums)
     const photos = await axios.get('https://jsonplaceholder.typicode.com/photos')
-    console.log('photos', photos)
+    console.log('Photos', photos)
     const todos = await axios.get('https://jsonplaceholder.typicode.com/todos')
-    console.log('todos', todos)
+    console.log('Todos', todos)
     const users = await axios.get('https://jsonplaceholder.typicode.com/users')
-    console.log('users', users)
+    console.log('Users', users)
 }
 
 getDataInSequence()
